@@ -1,4 +1,6 @@
 import streamlit as st
+from st_aggrid import AgGrid
+import pandas as pd
 
 transactions = [
     {
@@ -19,5 +21,14 @@ transactions = [
 ]
 
 def show_transactions():
+    st.selectbox('', ('Despesas', 'Receitas'))
+
+    AgGrid(
+        data=pd.DataFrame(transactions),
+        reload_data=True,
+        key='transactions_grid',
+    )
+
+
     
     
